@@ -1,5 +1,5 @@
 map <leader>pinit :e ~/.config/nvim/plugin_settings/personal.vim<cr>
-autocmd BufWritePost vimrc source $MYVIMRC
+autocmd BufWritePost ~/.config/nvim/plugin_settings/personal.vim<cr> source $MYVIMRC
 
 set noswapfile
 
