@@ -1,0 +1,3 @@
+[submodule "nvim/.config/nvim/autoload/vim-plug"]
+	path = nvim/.config/nvim/autoload/vim-plug
+	url = https://github.com/junegunn/vim-plug
