@@ -20,6 +20,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-sensible'
 Plug 'jiangmiao/auto-pairs'
 
+
 call plug#end()
 
 colorscheme dracula
+
+source ./plugin_settings/coc.vim
+
