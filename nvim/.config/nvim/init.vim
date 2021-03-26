@@ -5,7 +5,8 @@ let $RTP=split(&runtimepath, ',')[0]
 set path=.,**
 
 " vimrc interactions
-map <leader>vimrc :e ~/.config/nvim/init.vim<cr>
+map <leader>init :e ~/.config/nvim/init.vim<cr>
+autocmd BufWritePost ~/.config/nvim/init.vim source $MYVIMRC
 
 filetype off
 
@@ -19,11 +20,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-sensible'
 Plug 'jiangmiao/auto-pairs'
-
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
 colorscheme dracula
 
 source ./plugin_settings/coc.vim
-
+source ./plugin_settings/personal.vim
