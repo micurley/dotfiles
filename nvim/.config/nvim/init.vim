@@ -33,5 +33,5 @@ call plug#end()
 
 colorscheme dracula
 
-source ./plugin_settings/coc.vim
-source ./plugin_settings/personal.vim
+source ~/.config/nvim/plugin_settings/coc.vim
+source ~/.config/nvim/plugin_settings/personal.vim
