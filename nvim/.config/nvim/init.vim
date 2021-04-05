@@ -28,6 +28,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-sort-motion'
 Plug 'junegunn/vim-peekaboo'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+Plug 'cometsong/CommentFrame.vim'
 
 call plug#end()
 

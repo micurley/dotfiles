@@ -1,0 +1,44 @@
+# This is a generic set of useful aliases and config settings for git
+
+# Best practive for commit messages
+# [commit]
+#   template = ./gitmessage.template
+
+# Facilitates mergeing npm lockfiles which are a bitch when mangled
+[merge "npm-merge-driver"]
+  name = automatically merge npm lockfiles
+  driver = npx npm-merge-driver merge %A %O %B %P
+
+# Facilitates rebasing by re running previous rebase actions
+[rerere]
+  enabled = 1
+
+[rebase]
+  autosquash = true
+  
+[alias]
+  bclean = "!f() { git branch --merged ${1-develop} | grep -v  ${1-develop}$ | xargs git branch -d; }; f"
+  ls = "!git --no-pager log --reverse --pretty=format:'%Cred%h%Creset - %<(50,trunc)%s %Cgreen%<(14)%cr%Creset %Cblue%<(20)%an%Creset %C(yellow)%d%Creset' --abbrev-commit --date=relative"
+  lg = "!git --no-pager log --graph   --pretty=format:'%Cred%h%Creset - %<(50,trunc)%s %Cgreen%<(14)%cr%Creset %Cblue%<(20)%an%Creset %C(yellow)%d%Creset' --abbrev-commit --date=relative"
+  pr = "!f() { git fetch origin pull/${1}/head:pr-${1}; git checkout pr-${1}; }; f"
+  smudge-source = "!git --no-pager log -n 1 --reverse --pretty=format:'%H|%ct|%an|%D'"
+  root = "rev-parse --show-toplevel"
+  
+  merge-base-current = "!f() { \
+    git merge-base ${1-develop} $(git rev-parse --abbrev-ref HEAD); \
+  }; f"
+
+  push-branch-to-origin = "!f() { \
+    git push -u origin $(git rev-parse --abbrev-ref HEAD); \
+  }; f"
+
+  cob = "!f() { \
+    BRANCH_PREFIX=`git config --get user.prefix`; \
+    git checkout -b ${BRANCH_PREFIX-unknown}/${1}; \
+  }; f"
+  
+  bv = branch -v
+  s = status
+  stauts = status
+  pbo = "!git push-branch-to-origin"
+  mbc = "!git merge-base-current"
