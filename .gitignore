@@ -1,2 +1,6 @@
 .DS_Store
 fish/fishd.tmp*
+.DS_Store
+.local
+.*.swp
+.env.fish

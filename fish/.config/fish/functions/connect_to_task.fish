@@ -16,7 +16,6 @@ function connect_to_task
     set -g envs dev development dev2 development prod production stage stage
     set -g clusters dev dev-ecs-cluster dev2 conduit-dev prod production-ecs-cluster stage staging-ecs-cluster
 
-
     # Search for the environment in the clusters dictionary
     for i in (seq 1 2 (count $clusters))
         set -l c_key $clusters[$i]
@@ -54,7 +53,7 @@ function connect_to_task
         set service_name (echo $s | string split "/" | tail -n1)
 
         echo "$i. $service_name in $region"
-        set -l i (math $i + 1)
+        set i (math $i + 1)
     end
 
     set -l selected_task (read -P "Select a Service: ")

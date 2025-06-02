@@ -2,7 +2,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     alias vim='nvim'
     set -gx EDITOR vim
-    set -gx GITHUB_TOKEN *********************************************************************************************
 
     alias rf='source ~/.config/fish/config.fish'
 
@@ -25,7 +24,7 @@ if status is-interactive
     fish_vi_key_bindings
 
     # Support NVM
-    source ~/.config/fish/functions/nvm.fish/nvm.fish
+    source ~/.config/fish/functions/nvm.fish
 
     function __nvm_auto_use --on-variable PWD
         if test -f .nvmrc
@@ -37,3 +36,20 @@ end
 
 # Created by `pipx` on 2025-02-06 16:36:50
 set PATH $PATH /Users/morgancurley/.local/bin
+
+# Clean up leftover temp universal variable files
+for tmpfile in ~/.config/fish/fishd.tmp.*
+    if test -e $tmpfile
+        rm $tmpfile
+    end
+end
+
+# Source secrets file if it exists
+set -l env_file ~/.config/fish/.env.fish
+
+# Create the file if it doesn't exist
+if not test -f $env_file
+    echo "# Private environment variables (e.g., tokens, API keys)" >$env_file
+    echo "# set -x GITHUB_TOKEN ghp_..." >>$env_file
+    echo "# Add your secrets here. This file is git-ignored." >>$env_file
+end

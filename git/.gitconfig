@@ -1,0 +1,4 @@
+[include]
+	path = /Users/morgancurley/.config/git/gitconfig.txt
+[maintenance]
+	repo = /Users/morgancurley/Git/orders
