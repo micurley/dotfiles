@@ -4,4 +4,4 @@ fish/fishd.tmp*
 .local
 .*.swp
 .env.fish
-**/fish_variables
+fish/.config/fish/fish_variables
