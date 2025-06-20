@@ -3,6 +3,9 @@ if status is-interactive
     alias vim='nvim'
     set -gx EDITOR vim
 
+    # use nvim as man page veiwer
+    set -Ux MANPAGER "nvim +Man!"
+
     alias rf='source ~/.config/fish/config.fish'
 
     test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
@@ -45,11 +48,14 @@ for tmpfile in ~/.config/fish/fishd.tmp.*
 end
 
 # Source secrets file if it exists
-set -l env_file ~/.config/fish/.env.fish
+set -l env_file "$HOME/.config/fish/.env.fish"
 
 # Create the file if it doesn't exist
 if not test -f $env_file
     echo "# Private environment variables (e.g., tokens, API keys)" >$env_file
     echo "# set -x GITHUB_TOKEN ghp_..." >>$env_file
     echo "# Add your secrets here. This file is git-ignored." >>$env_file
+    echo "echo `.env.fish` file exists'" >>$env_file
 end
+
+source $env_file
